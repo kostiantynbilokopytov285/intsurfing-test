@@ -7,12 +7,13 @@ import {
 
 import { getPokemons, getPokemonById } from 'api/pokemons'
 import QUERY_KEYS from 'common/enums'
+import { Data, Order } from 'modules/table/types'
 
 interface IUseAbilitiesProps {
   page: number
   rowsPerPage: number
-  order: any
-  orderBy: any
+  order: Order
+  orderBy: keyof Data
 }
 
 const useAbilities = ({
