@@ -10,12 +10,14 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 
 import type { IGetPokemonByIdResponse } from 'api/pokemons'
+import { Table, TableHead } from '@mui/material'
 
 const Row = ({
   base_experience,
   id,
   height,
   name,
+  stats,
   weight
 }: IGetPokemonByIdResponse) => {
   const [open, setOpen] = useState(false)
@@ -51,6 +53,24 @@ const Row = ({
               height={100}
               alt="pokemon"
             />
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Base Stat</TableCell>
+                  <TableCell>Effort</TableCell>
+                  <TableCell>Stat</TableCell>
+                </TableRow>
+              </TableHead>
+              {stats?.map(({ base_stat, effort, stat }) => {
+                return (
+                  <TableRow key={stat.name}>
+                    <TableCell>{stat.name}</TableCell>
+                    <TableCell>{base_stat}</TableCell>
+                    <TableCell>{effort}</TableCell>
+                  </TableRow>
+                )
+              })}
+            </Table>
           </Collapse>
         </TableCell>
       </TableRow>

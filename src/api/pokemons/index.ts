@@ -5,6 +5,15 @@ interface IAbility {
   url: string
 }
 
+interface IStat {
+  base_stat: number
+  effort: number
+  stat: {
+    name: string
+    url: string
+  }
+}
+
 interface IGetPokemonsResponse {
   count: number
   next: string
@@ -18,6 +27,7 @@ export interface IGetPokemonByIdResponse {
   height: number
   name: string
   sprites: string[]
+  stats: IStat[]
   weight: number
 }
 
