@@ -38,10 +38,12 @@ const TableAll = () => {
           onRequestSort={handleRequestSort}
         />
         <TableBody>
-          {visibleRows?.map((pokemon) => {
+          {visibleRows?.map((pokemon, index) => {
             {
-              // @ts-ignore need extend props from base react component
-              return pokemon ? <Row key={pokemon?.name} {...pokemon} /> : null
+              return pokemon ? (
+                // @ts-ignore need extend props from base react component
+                <Row key={pokemon?.name ?? index} {...pokemon} />
+              ) : null
             }
           })}
           <TablePagination
